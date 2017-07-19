@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include ./layout/title %>
+  </head>
+  <body>
+    <table border="1">
+      <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Alamat</th>
+        <th>No Telp</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Role</th>
+        <th>Salt</th>
+        <th>pilihan</th>
+      </tr>
+      <tr>
+        <% data_users.forEach( dt => { %>
+         <td><%= dt.id %></td>
+         <td><%= dt.nama %></td>
+         <td><%= dt.alamat %></td>
+         <td><%= dt.no_telp %></td>
+         <td><%= dt.email %></td>
+         <td><%= dt.username %></td>
+         <td><%= dt.password %></td>
+         <td><%= dt.role %></td>
+         <td><%= dt.salt %></td>
+         <td>
+         <a href="/users/edit/<%= dt.id %>">edit</a>
+         <a href="/users/delete/<%= dt.id %>">hapus</a>
+         </td>
+        <% }) %>
+      </tr>
+      
+    </table>
+  </body>
+</html>
