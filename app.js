@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 let app = express();
 
 var index = require ('./routers/index')
+const user = require('./routes/users')
 var packets = require ('./routers/packets')
 
 app.set('view engine', 'ejs');
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
 
 app.use('/', index);
+app.use('/users', user);
 app.use('/packets', packets);
 
 app.listen(3000, function() {

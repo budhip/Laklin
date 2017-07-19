@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include ./layout/title %>
+  </head>
+  <body>
+    <form action="/users/add" method="post">
+      <table>
+        <tr>
+          <td>Nama</td>
+          <td><input type="text" name="nama" placeholder="input nama"></td>
+        </tr>
+        <tr>
+          <td>Alamat</td>
+          <td><input type="text" name="alamat" placeholder="input alamat"></td>
+        </tr>
+        <tr>
+          <td>No Telpon</td>
+          <td><input type="text" name="no_telp" placeholder="input no telp"></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><input type="text" name="email" placeholder="input email"></td>
+        </tr>
+        <tr>
+          <td>Username</td>
+          <td><input type="text" name="username" placeholder="input username"></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input type="password" name="password" placeholder="input password"></td>
+        </tr>
+        <tr>
+          <td>Role</td>
+          <td>
+            <select name="role">
+                <option value="customer">customer</option>
+                <option value="admin">admin</option>
+              </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
