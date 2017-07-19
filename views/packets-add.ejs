@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= pageTitle%></title>
+  </head>
+  <body>
+    <h1>Tambah Data Paket Laundry</h1>
+    <br>
+    <button id="btn-back" onclick="window.location='/packets'">Back</button>
+
+    <form action="/packets/add" method="post">
+      <br>
+      <label><b>Nama Paket</b></label>
+      <input type="text" name="nama_paket" placeholder="--Nama Paket--" />
+      <br>
+      <label><b>Harga Paket/Kg</b></label>
+      <input type="text" name="harga_paket" placeholder="--Harga Paket--" />
+      <div class="clearfix">
+        <br>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </body>
+</html>

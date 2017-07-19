@@ -1,10 +1,8 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var order = sequelize.define('order', {
-    tgl_order: DataTypes.DATE,
-    tgl_selesai: DataTypes.DATE,
-    kg: DataTypes.FLOAT,
-    harga: DataTypes.INTEGER
+  var Packets = sequelize.define('Packets', {
+    nama_paket: DataTypes.STRING,
+    harga_paket: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
@@ -12,5 +10,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return order;
+  return Packets;
 };

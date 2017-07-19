@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= pageTitle %></title>
+  </head>
+  <body>
+    <h1>Data Paket</h1>
+    <br>
+    <button id="btn-start" onclick="window.location='packets/add'">Tambah Paket</button>
+    <button id="btn-back" onclick="window.location='/'">Back</button>
+    <div>
+      <br>
+      <table border="1">
+        <tr>
+          <th>No</th>
+          <th>Nama Paket</th>
+          <th>Harga Paket/Kg</th>
+          <th>Action</th>
+        </tr>
+        <% var no = 1; data.forEach(dp => { %>
+          <tr>
+            <td><%= no %> <% no+=1 %></td>
+            <td><%= dp.nama_paket %></td>
+            <td><%= dp.harga_paket %></td>
+            <td><a href='packets/edit/<%= dp.id %>'> Edit</a> || <a href='packets/delete/<%= dp.id %>' onclick="return confirm('Yakin mau menghapus data ini?');"> Delete</a></td>
+          </tr>
+        <% }) %>
+      </table>
+    </div>
+  </body>
+</html>
