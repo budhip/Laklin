@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= pageTitle %></title>
+  </head>
+  <body>
+    <h1>Edit Data Paket Laundry</h1>
+    <br>
+    <button id="btn-back" onclick="window.location='/packets'">Back</button>
+    <div>
+      <form action="/packets/edit/<%= data.id %>" method="post">
+        <br>
+        <label><b>Id Paket</b></label>
+        <input type="text" name="id" value="<%= data.id %>" disabled/>
+        <br>
+        <label><b>Nama Paket</b></label>
+        <input type="text" name="nama_paket" value="<%= data.nama_paket %>" />
+        <br>
+        <label><b>Harga Paket/Kg</b></label>
+        <input type="text" name="harga_paket" value="<%= data.harga_paket %>" />
+        <div class="clearfix">
+          <br>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
