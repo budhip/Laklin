@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 let app = express();
 
 var index = require ('./routers/index')
-const user = require('./routes/users')
+const user = require('./routers/users')
 var packets = require ('./routers/packets')
 
 app.set('view engine', 'ejs');
