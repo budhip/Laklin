@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/transactions/editstatus/<%= data_status[0].id %>" method="post">
+      <table>
+        <tr>
+          <td>Status</td>
+          <td>
+            <select name="PacketId">
+                <option value="<%= data_status[0].status %>">belum selesai</option>
+                <option value="selesai">selesai</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

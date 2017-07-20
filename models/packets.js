@@ -3,12 +3,13 @@ module.exports = function(sequelize, DataTypes) {
   var Packets = sequelize.define('Packets', {
     nama_paket: DataTypes.STRING,
     harga_paket: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+  
+  
+Packets.associate = (models) =>{
+  Packets.belongsToMany(models.User, {
+    through: 'Transaction'
+  })
+}
   return Packets;
 };

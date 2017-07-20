@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h3><%= header %></h3>
+    <a href="/transactions/add"><button type="button" name="add_transaction">add transaction</button></a>
+    <table border="1">
+      <tr>
+        <th>No</th>
+        <th>Nama Pelanggan</th>
+        <th>Paket</th>
+        <th>Tanggal Pesan</th>
+        <th>Tanggal Selesai</th>
+        <th>Berat/Qty</th>
+        <th>Harga</th>
+        <th>Jumlah</th>
+        <th>Petugas Laundry</th>
+        <th>Status</th>
+        <th>No Invoice</th>
+      </tr>
+
+      <% data_transactions.forEach( dt => { %>
+      <tr>
+         <td><%= dt.id %></td>
+         <td><%= dt.User.nama %></td>
+         <td><%= dt.Packet.nama_paket %></td>
+         <td><%= dt.tgl_pesan.toISOString().split('T')[0] %></td>
+         <td><%= dt.tgl_selesai.toISOString().split('T')[0]; %></td>
+         <td><%= dt.berat %></td>
+         <td><%= dt.Packet.harga_paket %></td>
+         <td><%= dt.harga %></td>
+         <td><%= dt.petugas_laundry %></td>
+         <% if (dt.status == 'belum selesai') { %>
+         <td><a href="/transactions/editstatus/<%= dt.id %>">belum selesai</a></td>
+         <% } else { %>
+        <td><%= dt.status %></td>
+        <% } %>
+         <td><%= dt.no_invoice %></td>
+         <td>
+           <a href="/transactions/edit/<%= dt.id %>">edit</a>
+           <a href="/transactions/delete/<%= dt.id %>">hapus</a>
+         </td>
+      </tr>
+      <% }) %>
+    </table>
+    
+  </body>
+</html>

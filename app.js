@@ -6,10 +6,11 @@ const session = require('express-session');
 let app = express();
 
 var index = require ('./routers/index')
+var user = require('./routers/users')
 var login = require ('./routers/login')
 var dashboard = require ('./routers/dashboard')
-const user = require('./routers/users')
 var packets = require ('./routers/packets')
+var transaction = require('./routers/transactions')
 
 app.set('view engine', 'ejs');
 
@@ -30,6 +31,8 @@ app.use('/dashboard', dashboard);
 app.use('/', index);
 app.use('/users', user);
 app.use('/packets', packets);
+app.use('/transactions', transaction);
+
 
 app.listen(3000, function() {
   console.log('I am listening at port 3000')

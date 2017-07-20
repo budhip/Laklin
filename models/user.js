@@ -22,5 +22,12 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+  
+  User.associate = (models) => {
+    User.belongsToMany(models.Packets, {
+      through: 'Transaction'
+    })
+  }
+  
   return User;
 };
