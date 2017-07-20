@@ -3,6 +3,14 @@ var router = express.Router()
 
 const Models = require('../models');
 
+router.use((req,res,next)=> {
+  if(req.session.user.role == 'admin'){
+     next();
+  } else {
+    res.send('Maaf anda tidak diizinkan mengakses halaman ini');
+  }
+})
+
 router.get('/', function(req, res, next) {
   Models.Packets.findAll({
     order: [['nama_paket', 'ASC']]

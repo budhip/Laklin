@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= pageTitle %></title>
+  </head>
+  <body>
+    <h1>Hi, <%= userSession.username %></h1>
+    Login sebagai: <%- userSession.role %>
+
+    <ul>
+      <% getUserAuth.forEach(ua => { %>
+        <button onclick="window.location='<%- ua %>'"><%- ua %></button>
+      <% }) %>
+    </ul>
+    <ul>
+      <button onclick="window.location='/logout'">Logout</button>
+    </ul>
+  </body>
+</html>
