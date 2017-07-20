@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Edit Transaksi</h1>
+    <form action="/transactions/edit/<%= data_transaction[0].id %>" method="post">
+      <table>
+        <tr>
+          <td>Nama Pelanggan</td>
+          <td>
+            <select name="UserId">
+              <% data_users.forEach( dt => { %>
+                <% var selected %>
+                <% if (dt.id == data_transaction[0].UserId) { %>
+                  <% selected = "selected" %>
+                <% } %>
+                <option value="<%= dt.id %>" <%=selected%>><%= dt.nama %></option>
+              <% }) %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Paket</td>
+            <td>
+              <select name="PacketId">
+                <% data_packets.forEach( dt => { %>
+                  <% var selected %>
+                  <% if (dt.id == data_transaction[0].PacketId) { %>
+                    <% selected = "selected" %>
+                  <% } %>
+                  <option value="<%= dt.id %>,<%= dt.harga_paket %>" <%=selected%>><%=dt.nama_paket %></option>
+                <% }) %>
+              </select>
+            </td>
+        </tr>
+        <tr>
+          <td>Tanggal Pesan</td>
+          <td><input type="date" name="tgl_pesan" value="<%= tgl_pesan %>"></td>
+        </tr>
+        <tr>
+          <td>Tanggal Selesai</td>
+          <td><input type="date" name="tgl_selesai" value="<%= tgl_selesai %>"></td>
+        </tr>
+        <tr>
+          <td>Berat</td>
+          <td><input type="text" name="berat" value="<%= data_transaction[0].berat %>">.Kg</td>
+        </tr>
+        <tr>
+          <td>Petugas Laundry</td>
+          <td><input type="text" name="petugas_laundry" value="<%= data_transaction[0].petugas_laundry%>"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

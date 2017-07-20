@@ -9,12 +9,13 @@ module.exports = function(sequelize, DataTypes) {
     password: DataTypes.STRING,
     salt: DataTypes.STRING,
     role: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+  
+  User.associate = (models) => {
+    User.belongsToMany(models.Packets, {
+      through: 'Transaction'
+    })
+  }
+  
   return User;
 };

@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   db.User.findAll()
   .then( data => {
     res.render('users', {title: 'users page',data_users : data})
+    console.log(data[0].id);
   })
 })
 

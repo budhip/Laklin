@@ -5,8 +5,9 @@ const bodyParser = require('body-parser');
 let app = express();
 
 var index = require ('./routers/index')
-const user = require('./routers/users')
+var user = require('./routers/users')
 var packets = require ('./routers/packets')
+var transaction = require('./routers/transactions')
 
 app.set('view engine', 'ejs');
 
@@ -18,6 +19,8 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use('/', index);
 app.use('/users', user);
 app.use('/packets', packets);
+app.use('/transactions', transaction);
+
 
 app.listen(3000, function() {
   console.log('I am listening at port 3000')
