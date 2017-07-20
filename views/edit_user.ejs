@@ -5,41 +5,89 @@
     <title></title>
   </head>
   <body>
-    <form action="/users/edit/<%= edit_user.id %>" method="post">
-      <table>
-        <tr>
-          <td>Nama</td>
-          <td><input type="text" name="nama" value="<%= edit_user.nama %>"></td>
-        </tr>
-        <tr>
-          <td>Alamat</td>
-          <td><input type="text" name="alamat" value="<%= edit_user.alamat %>"></td>
-        </tr>
-        <tr>
-          <td>No Telpon</td>
-          <td><input type="text" name="no_telp" value="<%= edit_user.no_telp %>"></td>
-        </tr>
-        <tr>
-          <td>Email</td>
-          <td><input type="text" name="email" value="<%= edit_user.email %>"></td>
-        </tr>
-        <tr>
-          <td>Username</td>
-          <td><input type="text" name="username" value="<%= edit_user.username %>"></td>
-        </tr>
-        <tr>
-          <td>Password</td>
-          <td><input type="password" name="password" value="<%= edit_user.password %>"></td>
-        </tr>
-        <tr>
-          <td>Role</td>
-          <td><input type="text" name="role" value="<%= edit_user.role %>"></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><input type="submit" value="Submit"></td>
-        </tr>
-      </table>
-    </form>
+    <% if (dataperlogin.role == 'admin') { %>
+      <form action="/users/edit/<%= edit_user.id %>" method="post">
+        <table>
+          <tr>
+            <td>Nama</td>
+            <td><input type="text" name="nama" value="<%= edit_user.nama %>"></td>
+          </tr>
+          <tr>
+            <td>Alamat</td>
+            <td><input type="text" name="alamat" value="<%= edit_user.alamat %>"></td>
+          </tr>
+          <tr>
+            <td>No Telpon</td>
+            <td><input type="text" name="no_telp" value="<%= edit_user.no_telp %>"></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><input type="text" name="email" value="<%= edit_user.email %>"></td>
+          </tr>
+          <tr>
+            <td>Username</td>
+            <td><input type="text" name="username" value="<%= edit_user.username %>"></td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td><input type="password" name="password" value="<%= edit_user.password %>"></td>
+          </tr>
+          <tr>
+            <td>Role</td>
+            <!-- <td><input type="text" name="role" value="<%= edit_user.role %>"></td> -->
+            <td>
+              <select name="role">
+                <% if(edit_user.role == null) {%>
+                  <option value="customer">customer</option>
+                  <option value="admin">admin</option>
+                <%} else {%>
+                  <option  value="<%= edit_user.id %>" selected="<%= edit_user.id %>"><%=edit_user.role %></option>
+                  <option value="customer">customer</option>
+                  <option value="admin">admin</option>
+                <% } %>
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="submit" value="Submit"></td>
+          </tr>
+        </table>
+      </form>
+    <% } else { %>
+      <form action="/users/edit/<%= dataperlogin.id %>" method="post">
+        <table>
+          <tr>
+            <td>Nama</td>
+            <td><input type="text" name="nama" value="<%= dataperlogin.nama %>"></td>
+          </tr>
+          <tr>
+            <td>Alamat</td>
+            <td><input type="text" name="alamat" value="<%= dataperlogin.alamat %>"></td>
+          </tr>
+          <tr>
+            <td>No Telpon</td>
+            <td><input type="text" name="no_telp" value="<%= dataperlogin.no_telp %>"></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><input type="text" name="email" value="<%= dataperlogin.email %>"></td>
+          </tr>
+          <tr>
+            <td>Username</td>
+            <td><input type="text" name="username" value="<%= dataperlogin.username %>"></td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td><input type="password" name="password" value="<%= dataperlogin.password %>"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="submit" value="Submit"></td>
+          </tr>
+        </table>
+      </form>
+    <% } %>
+
   </body>
 </html>

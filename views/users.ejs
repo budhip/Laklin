@@ -5,6 +5,7 @@
     <%- include ./layout/title %>
   </head>
   <body>
+    <% if( dataperlogin.role == 'admin') { %>
     <a href="/users/add"><button type="button" name="add_user">add user</button></a>
     <table border="1">
       <tr>
@@ -18,9 +19,9 @@
         <th>Role</th>
         <th>pilihan</th>
       </tr>
-      <% data_users.forEach( dt => { %>
+      <% var no = 1; data_users.forEach( dt => { %>
       <tr>
-         <td><%= dt.id %></td>
+         <td><%= no %><% no+=1 %></td>
          <td><%= dt.nama %></td>
          <td><%= dt.alamat %></td>
          <td><%= dt.no_telp %></td>
@@ -29,11 +30,39 @@
          <td><%= dt.password %></td>
          <td><%= dt.role %></td>
          <td>
-         <a href="/users/edit/<%= dt.id %>">edit</a>
+         <a href="/users/edit/<%= dt.id %>">edit</a> ||
          <a href="/users/delete/<%= dt.id %>">hapus</a>
          </td>
       </tr>
       <% }) %>
     </table>
+    <% } else { %>
+      <table border="1">
+        <tr>
+          <th>Nama</th>
+          <th>Alamat</th>
+          <th>No Telp</th>
+          <th>Email</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Role</th>
+          <th>pilihan</th>
+        </tr>
+
+        <tr>
+           <td><%= dataperlogin.nama %></td>
+           <td><%= dataperlogin.alamat %></td>
+           <td><%= dataperlogin.no_telp %></td>
+           <td><%= dataperlogin.email %></td>
+           <td><%= dataperlogin.username %></td>
+           <td><%= dataperlogin.password %></td>
+           <td><%= dataperlogin.role %></td>
+           <td>
+           <a href="/users/edit/<%= dataperlogin.id %>">edit</a>
+           </td>
+        </tr>
+      </table>
+    <%}%>
+
   </body>
 </html>

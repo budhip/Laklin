@@ -1,4 +1,7 @@
 'use strict';
+
+const encryptMyPwd = require('../helpers/encryptMyPwd');
+
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
     nama: DataTypes.STRING,
@@ -10,9 +13,12 @@ module.exports = function(sequelize, DataTypes) {
     salt: DataTypes.STRING,
     role: DataTypes.STRING
   }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
+    hooks: {
+      beforeCreate: function(models) {
+        let salt = encryptMyPwd.genRandomString(8);
+        let password = models.password
+        models.password = encryptMyPwd.createHash(password, salt);
+        models.salt = salt;
       }
     }
   });
