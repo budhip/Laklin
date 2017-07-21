@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <%- include ./layout/style %>
   </head>
   <body>
     <h3><%= header %></h3>
-    <a href="/transactions/add"><button type="button" name="add_transaction">add transaction</button></a>
-    <button onclick="window.location='/dashboard'">Back</button>
-    <table border="1">
+    <a href="/transactions/add"><button type="button" name="add_transaction" class="btn waves-effect waves-light">add transaction</button></a>
+    <table border="1" class="bordered">
       <tr>
         <th>No</th>
         <th>Nama Pelanggan</th>

@@ -2,12 +2,12 @@
 <html>
   <head>
     <title><%= pageTitle%></title>
+    <%- include ./layout/style %>
   </head>
   <body>
     <h1>Tambah Data Paket Laundry</h1>
     <br>
     <button id="btn-back" onclick="window.location='/packets'">Back</button>
-
     <form action="/packets/add" method="post">
       <br>
       <label><b>Nama Paket</b></label>
