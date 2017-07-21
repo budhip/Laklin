@@ -14,7 +14,9 @@ module.exports = {
     */
     return queryInterface.bulkInsert('Packets', [{
       nama_paket: 'landry express',
-      harga_paket: 20000
+      harga_paket: 20000,
+      createdAt: new Date(),
+      updatedAt: new Date()
     }])
   },
 
