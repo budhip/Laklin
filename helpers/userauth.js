@@ -3,7 +3,7 @@ module.exports = {
     let menuDashboard = [];
     switch (role) {
       case "admin":
-        menuDashboard = ['dashboard', 'users', 'packets', 'transactions']
+        menuDashboard = ['dashboard', 'users', 'packets','transactions']
         return menuDashboard
         break;
       case "customer":

@@ -23,9 +23,9 @@
         <th>No Invoice</th>
       </tr>
 
-      <% data_transactions.forEach( dt => { %>
+      <% var no = 1;data_transactions.forEach( dt => { %>
       <tr>
-         <td><%= dt.id %></td>
+         <td><%= no %> <% no+=1 %></td>
          <td><%= dt.User.nama %></td>
          <td><%= dt.Packet.nama_paket %></td>
          <td><%= dt.tgl_pesan.toISOString().split('T')[0] %></td>
@@ -47,6 +47,6 @@
       </tr>
       <% }) %>
     </table>
-    
+
   </body>
 </html>
