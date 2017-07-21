@@ -13,14 +13,14 @@ module.exports = {
       }], {});
     */
     return queryInterface.bulkInsert('Users', [{
-      nama: 'Gani',
-      alamat: 'Praja dalam e 2',
-      no_telp: '0811223344',
-      email: 'rusli.gani88@gmail.com',
-      username: 'gani',
-      password: '1234',
-      salt: '123abc',
-      role: 'customer',
+      nama: 'Admin Laundry',
+      alamat: 'Jl. Admin',
+      no_telp: '+6285219476208',
+      email: 'ryo.bunraku@yahoo.com',
+      username: 'admin',
+      password: '523954306471942341e0970cbbdd3f0599feabf7e17d0e27e6a95a7e8f70c9ca',
+      salt: '59efc3cc',
+      role: 'admin',
       createdAt: new Date(),
       updatedAt: new Date()
     }])
