@@ -137,39 +137,51 @@ router.get('/editstatus/:id', (req,res)=> {
 })
 
 router.post('/editstatus/:id', (req,res)=> {
-  nexmo.message.sendSms(
-  '+6285219476208',req.body.no_telp, 'Dear Customer. Cucian anda sudah bisa diambil. Terima kasih -LaKlin-',(err, responseData) => {
-    if(err) {
-      console.log(err);
-    } else {
-      console.dir(responseData);
+  if (req.body.PacketId == 'selesai') {
+    nexmo.message.sendSms(
+    '+6285219476208',req.body.no_telp, req.body.content,(err, responseData) => {
+      if(err) {
+        console.log(err);
+      } else {
+        console.dir(responseData);
+      }
+    })
+    var mailOptions={
+      from: 'no-reply@laklin.com',
+      to : req.body.email,
+      subject : 'Notifikasi LaKlin',
+      text : req.body.content
     }
-  })
-  var mailOptions={
-    from: 'no-reply@laklin.com',
-    to : req.body.email,
-    subject : 'Notifikasi LaKlin',
-    text : req.body.content
+    console.log(mailOptions);
+    smtpTransport.sendMail(mailOptions, function(error, response){
+      if(error){
+        console.log(error);
+        res.end("error");
+      }else{
+        console.log("Message sent: " + response.message);
+        res.end("sent");
+      }
+    })
+    db.Transaction.update({
+      status:req.body.PacketId
+    },
+    {
+      where: {id:req.params.id}
+    })
+    .then( () => {
+      res.redirect('/transactions')
+    })
+  } else {
+    db.Transaction.update({
+      status:req.body.PacketId
+    },
+    {
+      where: {id:req.params.id}
+    })
+    .then( () => {
+      res.redirect('/transactions')
+    })
   }
-  console.log(mailOptions);
-  smtpTransport.sendMail(mailOptions, function(error, response){
-    if(error){
-      console.log(error);
-      res.end("error");
-    }else{
-      console.log("Message sent: " + response.message);
-      res.end("sent");
-    }
-  })
-  db.Transaction.update({
-    status:req.body.PacketId
-  },
-  {
-    where: {id:req.params.id}
-  })
-  .then( () => {
-    res.redirect('/transactions')
-  })
 })
 
 module.exports = router;
