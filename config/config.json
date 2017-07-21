@@ -1,0 +1,12 @@
+{
+  "development": {
+    "username": "user_test",
+    "password": "laklin",
+    "database": "db_newlaklin",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable" : "DATABASE_URL"
+  }
+}
