@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    
+
   </head>
   <body>
     <h1>Edit Transaksi</h1>
+    <button id="btn-back" onclick="window.location='/transactions'" class="btn waves-effect waves-light">Back</button>
     <form action="/transactions/edit/<%= data_transaction[0].id %>" method="post">
       <table>
         <tr>
