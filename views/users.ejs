@@ -3,11 +3,14 @@
   <head>
     <meta charset="utf-8">
     <%- include ./layout/title %>
+    <%- include ./layout/style %>
   </head>
   <body>
+    <h3><center>User Page</center></h3>
     <% if( dataperlogin.role == 'admin') { %>
-    <a href="/users/add"><button type="button" name="add_user">add user</button></a>
-    <table border="1">
+    <a href="/users/add"><button type="button" name="add_user" class="btn waves-effect waves-light">add user</button></a>
+    <table class="bordered">
+      <thead>
       <tr>
         <th>No</th>
         <th>Nama</th>
@@ -19,7 +22,9 @@
         <th>Role</th>
         <th>pilihan</th>
       </tr>
+      </thead>
       <% var no = 1; data_users.forEach( dt => { %>
+      <tbody>
       <tr>
          <td><%= no %><% no+=1 %></td>
          <td><%= dt.nama %></td>
@@ -34,6 +39,7 @@
          <a href="/users/delete/<%= dt.id %>">hapus</a>
          </td>
       </tr>
+      </tbody>
       <% }) %>
     </table>
     <% } else { %>

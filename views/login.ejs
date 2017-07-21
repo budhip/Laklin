@@ -2,17 +2,26 @@
 <html>
   <head>
     <title><%= pageTitle %></title>
+    <%- include ./layout/style %>
   </head>
   <body>
     <h1><center>SELAMAT DATANG DI LaKlin</center></h1>
-    <div>
-      <form action="/login" method="post">
+    <div class="row">
+      <form action="/login" method="post" class="col s12">
+        <div class="input-field col s1">
         <label><b>Username</b></label>
+        </div>
+        <div class="input-field col s2">
         <input type="text" name="username" placeholder="--Username--" />
+        </div>
+        <div class="input-field col s1">
         <label><b>Password</b></label>
+        </div>
+        <div class="input-field col s2">
         <input type="password" name="password" placeholder="--Password--" />
-        <div>
-          <button type="submit">Submit</button>
+        </div>
+        <div class="input-field col s2">
+          <button type="submit" class="btn waves-effect waves-light">Submit<i class="material-icons right"></i></button>
         </div>
       </form>
     </div>

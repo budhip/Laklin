@@ -2,15 +2,16 @@
 <html>
   <head>
     <title><%= pageTitle %></title>
+    <%- include ./layout/style %>
   </head>
   <body>
     <h1>Data Paket</h1>
     <br>
-    <button id="btn-start" onclick="window.location='packets/add'">Tambah Paket</button>
-    <button id="btn-back" onclick="window.location='/'">Back</button>
+    <button id="btn-start" onclick="window.location='packets/add'" class="btn waves-effect waves-light">Tambah Paket</button>
+    <button id="btn-back" onclick="window.location='/'" class="btn waves-effect waves-light">Back</button>
     <div>
       <br>
-      <table border="1">
+      <table border="1" class="bordered">
         <tr>
           <th>No</th>
           <th>Nama Paket</th>

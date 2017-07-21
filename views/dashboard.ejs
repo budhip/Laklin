@@ -2,18 +2,18 @@
 <html>
   <head>
     <title><%= pageTitle %></title>
+    <%- include ./layout/style %>
   </head>
   <body>
-    <h1>Hi, <%= userSession.username %></h1>
+    <h3>Hi, <%= userSession.username %></h3>
     Login sebagai: <%- userSession.role %>
-
     <ul>
       <% getUserAuth.forEach(ua => { %>
-        <button onclick="window.location='<%- ua %>'"><%- ua %></button>
+        <button onclick="window.location='<%- ua %>'" class="btn waves-effect waves-light"><%- ua %></button>
       <% }) %>
     </ul>
     <ul>
-      <button onclick="window.location='/logout'">Logout</button>
+      <button onclick="window.location='/logout'" class="btn waves-effect waves-light">Logout</button>
     </ul>
   </body>
 </html>

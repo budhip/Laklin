@@ -2,14 +2,15 @@
 <html>
   <head>
     <title><%= pageTitle %></title>
+    <%- include ./layout/style %>
   </head>
   <body>
     <h1>SELAMAT DATANG DI LaKlin</h1>
 
     <% if(userSession == undefined) { %>
-      <button onclick="window.location='/login'">Sign In</button>
+      <button onclick="window.location='/login'" class="btn waves-effect waves-light">Sign In</button>
     <% } else { %>
-      <button onclick="window.location='/dashboard'">Dashboard</button>
+      <button onclick="window.location='/dashboard'" class="btn waves-effect waves-light">Dashboard</button>
     <% }
     %>
   </body>
