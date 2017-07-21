@@ -5,8 +5,25 @@
     <title></title>
   </head>
   <body>
+    <button onclick="window.location='/transactions'">Back</button>
     <form action="/transactions/editstatus/<%= data_status[0].id %>" method="post">
       <table>
+        <tr>
+          <td>Nama</td>
+          <td><input type="text" name="nama" value="<%= data_status[0].User.nama %>" disabled></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><input id="to" type="text" name="email" value="<%= data_status[0].User.email %>"></td>
+        </tr>
+        <tr>
+          <td>No. Telp</td>
+          <td><input type="text" name="no_telp" value="<%= data_status[0].User.no_telp %>"></td>
+        </tr>
+        <tr>
+          <td>Pesan</td>
+          <td><textarea name="content" cols="40" rows="5" placeholder="--Tulis Pesan Untuk Customer--"></textarea></td>
+        </tr>
         <tr>
           <td>Status</td>
           <td>
@@ -18,7 +35,7 @@
         </tr>
         <tr>
           <td></td>
-          <td><input type="submit" value="Submit"></td>
+          <td><input id="send_email" type="submit" value="Submit"></td>
         </tr>
       </table>
     </form>

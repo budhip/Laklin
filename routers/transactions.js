@@ -1,14 +1,38 @@
 const express = require('express');
 const db = require('../models');
-
+const nodemailer = require('nodemailer');
+const Nexmo = require('nexmo');
 
 var router = express.Router();
 
+const nexmo = new Nexmo ({
+  apiKey: 'f3fd377e',
+  apiSecret: 'c5f941db19e7f7b2'
+})
+
+var smtpTransport = nodemailer.createTransport({
+  service: "smtp2go",
+  host: "mail.smtp2go.com",
+  port: 2525,
+  auth: {
+    user: "theryoto07@gmail.com",
+    pass: "2ZktCgak1TB4"
+  }
+});
+
+router.use((req,res,next)=> {
+  if(req.session.user.role == 'admin'){
+     next();
+  } else {
+    res.send('Maaf anda tidak diizinkan mengakses halaman ini');
+  }
+})
 
 router.get('/', (req, res) => {
   db.Transaction.findAll({
-    attributes: {include: ['id']}, 
-    include: [{all:true}]
+    attributes: {include: ['id']},
+    include: [{all:true}],
+    order: [['tgl_pesan', 'ASC']]
   })
   .then( data => {
     let dataJumlah = data
@@ -104,6 +128,7 @@ router.get('/editstatus/:id', (req,res)=> {
   db.Transaction.findAll(
   {
     attributes: {include: ['id']},
+    include: [{all:true}],
     where: {id:req.params.id}
   })
   .then( data => {
@@ -112,6 +137,30 @@ router.get('/editstatus/:id', (req,res)=> {
 })
 
 router.post('/editstatus/:id', (req,res)=> {
+  nexmo.message.sendSms(
+  '+6285219476208',req.body.no_telp, 'Dear Customer. Cucian anda sudah bisa diambil. Terima kasih -LaKlin-',(err, responseData) => {
+    if(err) {
+      console.log(err);
+    } else {
+      console.dir(responseData);
+    }
+  })
+  var mailOptions={
+    from: 'no-reply@laklin.com',
+    to : req.body.email,
+    subject : 'Notifikasi LaKlin',
+    text : req.body.content
+  }
+  console.log(mailOptions);
+  smtpTransport.sendMail(mailOptions, function(error, response){
+    if(error){
+      console.log(error);
+      res.end("error");
+    }else{
+      console.log("Message sent: " + response.message);
+      res.end("sent");
+    }
+  })
   db.Transaction.update({
     status:req.body.PacketId
   },

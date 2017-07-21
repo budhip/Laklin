@@ -6,6 +6,7 @@
   </head>
   <body>
     <% if (dataperlogin.role == 'admin') { %>
+      <button onclick="window.location='/users'">Back</button>
       <form action="/users/edit/<%= edit_user.id %>" method="post">
         <table>
           <tr>
@@ -34,16 +35,19 @@
           </tr>
           <tr>
             <td>Role</td>
-            <!-- <td><input type="text" name="role" value="<%= edit_user.role %>"></td> -->
             <td>
               <select name="role">
                 <% if(edit_user.role == null) {%>
                   <option value="customer">customer</option>
                   <option value="admin">admin</option>
                 <%} else {%>
-                  <option  value="<%= edit_user.id %>" selected="<%= edit_user.id %>"><%=edit_user.role %></option>
-                  <option value="customer">customer</option>
-                  <option value="admin">admin</option>
+                  <% if (edit_user.role == 'admin') { %>
+                    <option  value="<%=edit_user.role %>" selected="<%= edit_user.id %>"><%=edit_user.role %></option>
+                    <option value="customer">customer</option>
+                  <% } else { %>
+                    <option  value="<%=edit_user.role %>" selected="<%= edit_user.id %>"><%=edit_user.role %></option>
+                    <option value="admin">admin</option>
+                  <% } %>
                 <% } %>
                 </select>
             </td>
@@ -55,6 +59,7 @@
         </table>
       </form>
     <% } else { %>
+      <button onclick="window.location='/users'">Back</button>
       <form action="/users/edit/<%= dataperlogin.id %>" method="post">
         <table>
           <tr>
