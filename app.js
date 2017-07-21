@@ -34,6 +34,4 @@ app.use('/packets', packets);
 app.use('/transactions', transaction);
 
 
-app.listen(3000, function() {
-  console.log('I am listening at port 3000')
-})
+app.listen(process.env.PORT || 3000)
